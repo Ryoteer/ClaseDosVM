@@ -5,6 +5,13 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class Player : MonoBehaviour
 {
+    [Header("Animation")]
+    [SerializeField] private Animator _animator;
+    [SerializeField] private string _xAxisName = "xAxis";
+    [SerializeField] private string _zAxisName = "zAxis";
+    [SerializeField] private string _onJumpName = "onJump";
+    [SerializeField] private string _onLandName = "onLand";
+
     [Header("Inputs")]
     [SerializeField] private KeyCode _jumpKey = KeyCode.Space;
 
@@ -26,13 +33,25 @@ public class Player : MonoBehaviour
         _rb.angularDrag = 1f;
     }
 
+    private void Start()
+    {
+        if (!_animator)
+        {
+            _animator = GetComponentInChildren<Animator>();
+        }
+    }
+
     private void Update()
     {
         _xAxis = Input.GetAxis("Horizontal");
         _zAxis = Input.GetAxis("Vertical");
 
+        _animator.SetFloat(_xAxisName, _xAxis);
+        _animator.SetFloat(_zAxisName, _zAxis);
+
         if (Input.GetKeyDown(_jumpKey))
         {
+            _animator.SetTrigger(_onJumpName);
             Jump();
         }
     }
@@ -55,5 +74,10 @@ public class Player : MonoBehaviour
     private void Jump()
     {
         _rb.AddForce(transform.up * _jumpForce, ForceMode.Impulse);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        _animator.SetTrigger(_onLandName);
     }
 }
