@@ -21,9 +21,9 @@ public class PlayerAvatar : MonoBehaviour
         _parent.Attack();
     }
 
-    public void CanJump(int state)
+    public void AreaAttack()
     {
-        _parent.CanJump(state);
+        _parent.AreaAttack();
     }
 
     public void Jump()
