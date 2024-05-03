@@ -179,5 +179,6 @@ public class Player : MonoBehaviour
         Gizmos.DrawRay(_jumpRay);
         Gizmos.color = Color.green;
         Gizmos.DrawRay(_attackRay);
+        Gizmos.DrawWireSphere(transform.position, _areaAtkRayRadius);
     }
 }

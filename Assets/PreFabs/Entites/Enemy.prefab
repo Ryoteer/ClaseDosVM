@@ -1183,6 +1183,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9181991575931220249}
   - component: {fileID: 410581366505495912}
+  - component: {fileID: 8957871381437497454}
   - component: {fileID: 1370746416894586402}
   m_Layer: 8
   m_Name: Enemy
@@ -1230,6 +1231,28 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!195 &8957871381437497454
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4350168380943504700}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!114 &1370746416894586402
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1242,6 +1265,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37ead26ba7336a648890153e4af023e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _agent: {fileID: 8957871381437497454}
+  _target: {fileID: 0}
+  _patrolNodes: []
+  _changeNodeDist: 0.75
+  _chaseDist: 7.5
+  _attackDist: 2.5
   _maxHP: 100
 --- !u!1 &4355677915997173841
 GameObject:
