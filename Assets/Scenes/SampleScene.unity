@@ -288,11 +288,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!4 &184998876 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5789240337134699833, guid: 79f2854f54773724d9684adfa03ad499, type: 3}
-  m_PrefabInstance: {fileID: 5276693656384282863}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &304679378
 GameObject:
   m_ObjectHideFlags: 0
@@ -329,15 +324,14 @@ Transform:
   - {fileID: 1739847156}
   - {fileID: 1532834895}
   - {fileID: 1730889543}
-  - {fileID: 184998876}
-  - {fileID: 521251859}
-  - {fileID: 834400766}
-  - {fileID: 1529759938}
   - {fileID: 1864393161}
   - {fileID: 867778218}
   - {fileID: 798073763}
   - {fileID: 1686396889}
   - {fileID: 1233074779}
+  - {fileID: 521251859}
+  - {fileID: 834400766}
+  - {fileID: 1529759938}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &304679380
@@ -359,7 +353,7 @@ MonoBehaviour:
   m_LayerMask:
     serializedVersion: 2
     m_Bits: 192
-  m_UseGeometry: 0
+  m_UseGeometry: 1
   m_DefaultArea: 0
   m_GenerateLinks: 1
   m_IgnoreNavMeshAgent: 1
@@ -5185,6 +5179,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Crate (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 2930339533415108922, guid: 0dd34f1b0ce250b4f8ca968dd2c5ef2b, type: 3}
+      propertyPath: m_Carve
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7786,7 +7784,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 304679379}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 225753752835228304, guid: 79f2854f54773724d9684adfa03ad499, type: 3}
       propertyPath: m_Mesh
@@ -7990,5 +7988,6 @@ SceneRoots:
   - {fileID: 705507995}
   - {fileID: 8040611980819081013}
   - {fileID: 304679379}
+  - {fileID: 5276693656384282863}
   - {fileID: 310642429}
   - {fileID: 870583272}
