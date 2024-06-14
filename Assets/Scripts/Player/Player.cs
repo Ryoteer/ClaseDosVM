@@ -2,10 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(Rigidbody), typeof(AudioSource))]
 [SelectionBase]
 public class Player : MonoBehaviour
 {
+    [Header("<color=orange>Audio</color>")]
+    [SerializeField] private AudioClip[] _stepClips;
+    [SerializeField] private AudioClip[] _attackClips;
+
     [Header("<color=orange>Animation</color>")]
     [SerializeField] private Animator _animator;
     [SerializeField] private string _xAxisName = "xAxis";
@@ -43,6 +47,8 @@ public class Player : MonoBehaviour
     private float _xAxis = 0f, _zAxis = 0f;
     private Vector3 _dir = new(), _transformOffset = new(), _dirOffset = new(), _rayDir = new();
 
+    private AudioSource _source;
+    private AudioClip _selectedClip;
     private Rigidbody _rb;
 
     private Ray _jumpRay, _movRay, _attackRay;
@@ -53,6 +59,8 @@ public class Player : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
         _rb.constraints = RigidbodyConstraints.FreezeRotation;
         _rb.angularDrag = 1f;
+
+        _source = GetComponent<AudioSource>();
     }
 
     private void Start()
@@ -169,6 +177,18 @@ public class Player : MonoBehaviour
         _jumpRay = new Ray(_transformOffset, -transform.up);
 
         return Physics.Raycast(_jumpRay, _jumpRayDist, _jumpRayMask);
+    }
+
+    public void PlayStepClip()
+    {
+        if (_source.isPlaying)
+        {
+            _source.Stop();
+        }
+
+        _source.clip = _stepClips[Random.Range(0, _stepClips.Length)];
+
+        _source.Play();
     }
 
     private void OnDrawGizmosSelected()
